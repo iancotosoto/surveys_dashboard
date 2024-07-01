@@ -4,7 +4,7 @@
 Using Docker and Streamlit, a web dashboard displays survey data and their results. The data is stored in PostgreSQL and MongoDB. Spark is used for data processing (ETL and OLAP).
 
 ## Objective
-The Objective of this project is to demonstrate abilities used in data analysis.
+The objective of this project is to demonstrate abilities used in data analysis.
 
 ## Installation
 1. Build database docker
