@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: surveys
+      DB_USER: postgres
+      DB_PASSWORD: mysecretpassword
+      MONGODB_USERNAME: mongoadmin
+      MONGODB_PASSWORD: mongosecret
+      MONGODB_SERVER: mongodb
+      MONGODB_PORT: 27017
+    ports:
+      - "5000:5000"
+    networks:
+      - web
+      - dashboard_network
+    depends_on:
+      - db
+      - mongodb
+    volumes:
+      - .:/opt/app
+    command: /usr/local/bin/start.sh
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    networks:
+      - web
+      - dashboard_network
+    volumes:
+      - ./database_scripts/:/docker-entrypoint-initdb.d/
+
+  mongodb:
+    image: mongo:3
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: mongosecret
+    ports:
+      - "27017:27017"
+    networks:
+      - web
+      - dashboard_network
+    volumes:
+      - mongodb-data:/data/db
+
+networks:
+  web:
+    driver: bridge
+  dashboard_network:
+    external: true
+
+volumes:
+  mongodb-data:
