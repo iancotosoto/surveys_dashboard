@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  pyspark-app:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      DB_NAME: surveys
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: mongosecret
+      COLLECTION_SURVEYS: encuestas
+      COLLECTION_ANSWERS: respuestas
+    ports:
+      - "8888:8888"
+    networks:
+      - dashboard_network
+
+networks:
+  dashboard_network:
+    external: true
