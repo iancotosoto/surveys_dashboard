@@ -35,8 +35,10 @@ docker compose -f ./apps/dashboard/docker-compose.yml up -d
 
 ## Possible errors
 - exec /usr/local/bin/start.sh: no such file or directory
+
 Resave the shell file because when making the start.sh file in Windows it creates a CRLF line ending file. Linux uses LF.
 Resource: https://stackoverflow.com/questions/72735140/azure-agents-with-docker-start-sh-no-such-file-or-directory 
 
 - port is already allocated
+
 To fix it, it is necessary to change the port in the docker to another unoccupied or eliminate the container utilizing that port.
