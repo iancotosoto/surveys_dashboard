@@ -8,16 +8,19 @@ The Objective of this project is to demonstrate abilities used in data analysis.
 
 ## Installation
 1. Build database docker
-#!/bin/bash
+```console
 docker compose -f ./apps/databases/docker-compose.yml up -d
+```
 
 2. Build spark docker
-#!/bin/bash
+```console
 docker compose -f ./apps/spark/docker-compose.yml up -d
+```
 
 3. Build dashboard docker
-#!/bin/bash
+```console
 docker compose -f ./apps/dashboard/docker-compose.yml up -d
+```
 
 4. Go to a browser and open http://localhost:8501
 
