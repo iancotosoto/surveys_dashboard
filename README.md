@@ -24,4 +24,4 @@ docker compose -f ./apps/dashboard/docker-compose.yml up -d
 
 4. Go to a browser and open http://localhost:8501
 
-> **Note**: Be sure that you are in surveys_dashboard before executing all the commands
+> **Note**: Be sure that you are in surveys_dashboard before executing all the commands.
